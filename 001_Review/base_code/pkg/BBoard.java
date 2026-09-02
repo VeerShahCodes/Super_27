@@ -31,9 +31,9 @@ public class BBoard {		// This is your main file that connects all classes.
 	public void loadUsers(String inputFile) throws FileNotFoundException {
 		Scanner fileScanner = new Scanner(new File(inputFile));
 		while(fileScanner.hasNextLine()) {
-			String username = fileScanner.nextLine();
-			if(!fileScanner.hasNextLine()) break;
-			String password = fileScanner.nextLine();
+			String line = fileScanner.nextLine();
+			String username = line.substring(0, line.indexOf((" ")));
+			String password = line.substring(line.indexOf(" ") + 1);
 			userList.add(new User(username, password));
 		}
 		fileScanner.close();
@@ -56,13 +56,17 @@ public class BBoard {		// This is your main file that connects all classes.
 			System.out.print("Password: ");
 			String password = scanner.nextLine();
 			boolean found = false;
-			for(User user : userList) {
+			
+			for(int i = 0; i < userList.size(); i++) {
+				User user = userList.get(i);
+				System.out.println(user.getUsername());
 				if(user.check(username, password)) {
 					currentUser = user;
 					found = true;
 					break;
 				}
 			}
+
 			if(found) break;
 			System.out.println("Invalid username or password. Try again.");
 		}
@@ -115,7 +119,9 @@ public class BBoard {		// This is your main file that connects all classes.
 	private void display(){
 		for(int i = 0; i < messageList.size(); i++) {
 			if(messageList.get(i) instanceof Topic) {
+				System.out.println("------------------------------------------");
 				((Topic) messageList.get(i)).print(0);
+				System.out.println("------------------------------------------");
 			}
 		}
 	}

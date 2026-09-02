@@ -27,7 +27,7 @@ public class User {
 	// Note that, even with a User with empty name and password, this is actually a valid User object (it is the default User), 
 	// This function must still return false if given an empty username string.  
 	public boolean check(String usr, String psd){
-		if(usr == name && psd == password) {
+		if(usr.equals(name) && psd.equals(password)) {
 			return true;
 		}
 		return false;
@@ -38,7 +38,7 @@ public class User {
 	// Also, a default User cannot have its password changed. 
 	// Return true if password changed, return false if not.
 	public boolean setPassword(String oldPass, String newPass){
-		if(oldPass == password) {
+		if(oldPass.equals(password)) {
 			password = newPass;
 			return true;
 		}

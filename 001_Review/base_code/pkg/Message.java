@@ -43,11 +43,15 @@ public class Message {
 			System.out.print("  ");
 		}
 		System.out.println("Message #" + id + ": " + subject);
+		for(int i = 0; i < indentation; i++) {
+			System.out.print("  ");
+		}
 		System.out.println("From " + author + ": " + body);
 
 		for (Message child : childList) {
 			child.print(indentation + 1);
 		}
+
 
 	}
 
