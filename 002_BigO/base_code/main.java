@@ -17,7 +17,7 @@ class main {
 			s.start();	
 			nums = new int[i];
 			//  Put your method between these two comments
-			InsertionSort(nums, nums.length);
+			SelectionSort(nums, nums.length);
 			//
 			s.stop();
 			System.out.println("Duration: " + Stopwatch.readable(s.read()));
@@ -42,22 +42,24 @@ class main {
 		}
 	}
 
-	public static void SelectionSort(int arr[], int n) {
-		Randomize(arr, n);
-		int i, j, min_idx;
+public static void SelectionSort(int arr[], int n) {
+    Randomize(arr, n);
+    int i, j, min_idx;
 
-		for(i = 0; i < n -1; i++) {
-			min_idx = i;
-			for(j = i + 1; j < n; j++) {
-				if(arr[j] < arr[min_idx]) {
-					min_idx = j;
-				}
-				int temp = arr[min_idx];
-				arr[min_idx] = arr[i];
-				arr[i] = temp;
-			}
-		}
-	}
+    for(i = 0; i < n - 1; i++) {
+        min_idx = i;
+
+        for(j = i + 1; j < n; j++) {
+            if(arr[j] < arr[min_idx]) {
+                min_idx = j;
+            }
+        }
+
+        int temp = arr[min_idx];
+        arr[min_idx] = arr[i];
+        arr[i] = temp;
+    }
+}
 
 	public static void InsertionSort(int arr[], int n) {
 		Randomize(arr, n);
