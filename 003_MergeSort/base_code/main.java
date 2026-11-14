@@ -51,7 +51,7 @@ class main {
 			s.start();
 
 			//  Put your method between these two comments
-			Randomize(nums, i);
+			Randomize(nums);
 			MergeSort(nums, 0, nums.length - 1);
 
 			s.stop();
@@ -165,10 +165,9 @@ class main {
 
 
 
-	public static void Randomize(int[] nums, int n) {
-		Random rand = new Random();
-		for(int i = 0; i < n; i++) {
-			nums[i] = rand.nextInt(n);
+	public static void Randomize(int[] nums) {
+		for(int i = 0; i < nums.length; i++) {
+			nums[i] = (int) (Math.random() * 200001);
 		}
 	}
 
